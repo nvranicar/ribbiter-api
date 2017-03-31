@@ -10,11 +10,12 @@
 | clean.
 |
 | @example
-| Route.get('/user', 'UserController.index')
 */
 
 const Route = use('Route');
 
 Route.on('/').render('welcome');
-Route.resource('user', 'UserController');
+Route.get('/users', 'UserController.index')
+Route.resource('users', 'UserController');
 Route.post('/users', 'UserController.store');
+Route.post('/login', 'UserController.login');
