@@ -6,14 +6,14 @@ class PostTableSchema extends Schema {
 
   up () {
     this.table('post', (table) => {
-      // alter post table
+      table.increments('id');
+      table.string('body');
+      table.integer('user_id').unsigned().references('id').inTable('users');
     })
   }
 
   down () {
-    this.table('post', (table) => {
-      // opposite of up goes here
-    })
+    this.drop('post');
   }
 
 }
