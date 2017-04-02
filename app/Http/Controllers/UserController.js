@@ -14,10 +14,11 @@ class UserController {
     const Hash = use('Hash');
     const input = request.only('email', 'password');
     input.password = yield Hash.make(input.password);
+    const foreignKeys = {
+    };
+    const newUser = yield User.create(Object.assign({}, input, foreignKeys));
 
-    const newUser = yield User.create(input);
-
-    response.json(newUser.toJSON());
+    response.json('User', newUser);
   }
 }
 
